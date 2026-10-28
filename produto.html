@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Peruca · Sua Marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&amp;family=Jost:wght@300..600&amp;display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announce"><div class="wrap"><span>Peças únicas de cabelo humano</span><span>Até 10x sem juros</span><span>5% off no Pix</span></div></div>
+
+<header class="header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Menu principal">
+      <a href="index.html#colecao">Coleção</a>
+      <a href="index.html#texturas">Texturas</a>
+      <a href="index.html#consultoria">Consultoria</a>
+      <a href="index.html#duvidas">Dúvidas</a>
+    </nav>
+    <button class="icon-btn menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav" data-menu>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="logo" href="index.html" data-loja-nome>Sua Marca</a>
+    <div class="header-actions">
+      <button class="icon-btn" type="button" aria-label="Buscar" data-demo="A busca funciona na loja publicada.">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn" type="button" aria-label="Sacola de compras" data-demo="A sacola abre o checkout na loja publicada.">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="bag-count" data-bag-count hidden>0</span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Menu">
+    <div class="wrap">
+      <a href="index.html#colecao">Coleção</a>
+      <a href="index.html#texturas">Texturas</a>
+      <a href="index.html#consultoria">Consultoria</a>
+      <a href="index.html#duvidas">Dúvidas</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap crumbs"><a href="index.html">Início</a> / <a href="index.html#colecao" data-crumb-textura>Coleção</a> / <span data-p="nome"></span></div>
+
+  <section class="wrap product">
+    <div class="gallery">
+      <div class="thumbs" data-thumbs></div>
+      <div class="main-photo"><span class="badge">Peça única</span><img data-main-photo src="" alt=""></div>
+    </div>
+
+    <div class="buy">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <p class="eyebrow">100% cabelo humano</p>
+        <h1 data-p="nome"></h1>
+        <p class="buy-sub" data-p="resumo"></p>
+      </div>
+
+      <div class="price-box">
+        <span class="price-main" data-p="preco"></span>
+        <span class="price-inst" data-p="parcela"></span>
+        <span class="price-pix" data-p="pix"></span>
+      </div>
+
+      <p style="color: var(--muted)" data-p="descricao"></p>
+
+      <div class="unique-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg>
+        Peça única: depois de vendida, ela sai da loja.
+      </div>
+
+      <div class="buy-actions">
+        <button class="btn btn-dark btn-block" type="button" data-comprar>Comprar</button>
+        <a class="btn btn-line btn-block" href="#" data-whatsapp-produto>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>
+          Tirar dúvidas no WhatsApp
+        </a>
+      </div>
+
+      <form class="cep" data-cep>
+        <label for="cep">Calcular frete</label>
+        <div class="cep-row">
+          <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9">
+          <button class="btn btn-line" type="submit">Calcular</button>
+        </div>
+        <p class="cep-result" data-cep-result></p>
+      </form>
+
+      <table class="specs">
+        <caption style="text-align: left; font-weight: 500; padding-bottom: 8px">Detalhes da peça</caption>
+        <tbody>
+          <tr><th scope="row">Cabelo</th><td>100% humano</td></tr>
+          <tr><th scope="row">Cor</th><td data-p="cor"></td></tr>
+          <tr><th scope="row">Comprimento</th><td data-p="comprimento"></td></tr>
+          <tr><th scope="row">Textura</th><td data-p="textura"></td></tr>
+          <tr><th scope="row">Touca</th><td data-p="touca"></td></tr>
+          <tr><th scope="row">Densidade</th><td data-p="densidade"></td></tr>
+        </tbody>
+      </table>
+
+      <div class="acc">
+        <details><summary>Cuidados com a peça</summary><p>Lave com shampoo sem sal e água fria ou morna. Use protetor térmico antes de escovar e guarde a peruca em um suporte, longe do sol.</p></details>
+        <details><summary>Entrega</summary><p>Envio com rastreio em [prazo de envio] após a confirmação do pagamento.</p></details>
+        <details><summary>Trocas e devoluções</summary><p>[Política de troca e devolução da loja]</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <div class="section-head"><div><p class="eyebrow">Veja também</p><h2>Outras peças</h2></div><a class="link-line" href="index.html#colecao">Ver coleção</a></div>
+      <div class="grid" data-related></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-top">
+    <div>
+      <a class="logo" href="index.html" data-loja-nome>Sua Marca</a>
+      <p style="max-width: 320px">Perucas de cabelo humano, peças únicas escolhidas uma a uma.</p>
+    </div>
+    <div><h4>Loja</h4><ul><li><a href="index.html#colecao">Todas as perucas</a></li><li><a href="index.html#texturas">Por textura</a></li><li><a href="index.html#duvidas">Dúvidas</a></li></ul></div>
+    <div><h4>Atendimento</h4><ul><li><a href="#" data-whatsapp="Olá!">WhatsApp</a></li><li><a href="#" data-instagram>Instagram</a></li><li>[E-mail]</li></ul></div>
+    <div><h4>Pagamento</h4><ul><li>Pix com 5% off</li><li>Cartão em até 10x</li><li>Compra segura</li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© <span data-ano></span> <span data-loja-nome>Sua Marca</span>. Todos os direitos reservados.</span>
+    <span>Site de exemplo · Fotos ilustrativas: Unsplash</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="#" data-whatsapp-produto aria-label="Falar no WhatsApp sobre esta peça">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 10.5c.5 1.5 1.8 2.8 3.4 3.4l1-1 1.8.7v1.4c-3.8.3-7.2-3.1-6.9-6.9h1.4l.7 1.8z" fill="currentColor" stroke="none"/></svg>
+</a>
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
