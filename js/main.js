@@ -106,6 +106,67 @@
     render('todas');
   }
 
+  // ---------- página da coleção ----------
+  var catGrid = $('[data-cat-grid]');
+  if (catGrid) {
+    var cm = function (p) { return parseInt(p.comprimento, 10) || 0; };
+    var estado = { textura: 'todas', comprimento: 'todos', preco: 'todos', ordem: 'destaques' };
+    var inicial = new URLSearchParams(location.search).get('textura');
+    if (TEXTURA_NOME[inicial]) estado.textura = inicial;
+
+    var selComp = $('[data-cat-comprimento]');
+    var selPreco = $('[data-cat-preco]');
+    var selOrdem = $('[data-cat-ordem]');
+
+    var passa = {
+      comprimento: function (p) {
+        var c = cm(p);
+        if (estado.comprimento === 'curto') return c <= 45;
+        if (estado.comprimento === 'medio') return c > 45 && c <= 60;
+        if (estado.comprimento === 'longo') return c > 60;
+        return true;
+      },
+      preco: function (p) {
+        if (estado.preco === 'ate3500') return p.preco <= 3500;
+        if (estado.preco === '3500a4500') return p.preco > 3500 && p.preco <= 4500;
+        if (estado.preco === 'acima4500') return p.preco > 4500;
+        return true;
+      }
+    };
+
+    var desenhar = function () {
+      var lista = PERUCAS.filter(function (p) {
+        return (estado.textura === 'todas' || p.textura === estado.textura) && passa.comprimento(p) && passa.preco(p);
+      });
+      if (estado.ordem === 'menor') lista.sort(function (a, b) { return a.preco - b.preco; });
+      if (estado.ordem === 'maior') lista.sort(function (a, b) { return b.preco - a.preco; });
+      if (estado.ordem === 'comprimento') lista.sort(function (a, b) { return cm(b) - cm(a); });
+
+      catGrid.innerHTML = lista.map(card).join('');
+      $('[data-cat-count]').textContent = lista.length === 1 ? '1 peça disponível' : lista.length + ' peças disponíveis';
+      $('[data-cat-empty]').hidden = lista.length > 0;
+      catGrid.hidden = lista.length === 0;
+      $all('[data-cat-textura]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-cat-textura') === estado.textura ? 'true' : 'false');
+      });
+      selComp.value = estado.comprimento;
+      selPreco.value = estado.preco;
+      selOrdem.value = estado.ordem;
+    };
+
+    $all('[data-cat-textura]').forEach(function (b) {
+      b.addEventListener('click', function () { estado.textura = b.getAttribute('data-cat-textura'); desenhar(); });
+    });
+    selComp.addEventListener('change', function () { estado.comprimento = selComp.value; desenhar(); });
+    selPreco.addEventListener('change', function () { estado.preco = selPreco.value; desenhar(); });
+    selOrdem.addEventListener('change', function () { estado.ordem = selOrdem.value; desenhar(); });
+    $('[data-cat-limpar]').addEventListener('click', function () {
+      estado = { textura: 'todas', comprimento: 'todos', preco: 'todos', ordem: estado.ordem };
+      desenhar();
+    });
+    desenhar();
+  }
+
   // ---------- página da peruca ----------
   var mainPhoto = $('[data-main-photo]');
   if (mainPhoto) {
@@ -130,7 +191,10 @@
     $all('[data-p]').forEach(function (el) { el.textContent = campos[el.getAttribute('data-p')] || ''; });
 
     var crumb = $('[data-crumb-textura]');
-    if (crumb) crumb.textContent = TEXTURA_PLURAL[p.textura];
+    if (crumb) {
+      crumb.textContent = TEXTURA_PLURAL[p.textura];
+      crumb.href = 'colecao.html?textura=' + p.textura;
+    }
 
     var legendas = ['Foto principal', 'Outro ângulo', 'Detalhe dos fios'];
     var thumbs = $('[data-thumbs]');

@@ -2,9 +2,10 @@
 
 Exemplo de loja online de perucas de cabelo humano, feito para mostrar à cliente como o site pode ficar.
 
-Duas páginas:
+Três páginas:
 
 - `index.html`: página inicial com destaque, texturas, coleção com filtro, consultoria pelo WhatsApp, por que cabelo humano, como comprar e dúvidas.
+- `colecao.html`: todas as perucas, com filtro por textura, comprimento e preço, e ordenação. Aceita `?textura=lisa|ondulada|cacheada` no endereço.
 - `produto.html?p=<id>`: página de cada peruca, com galeria, preço, parcelamento, desconto no Pix, botões **Comprar** e **Tirar dúvidas no WhatsApp**, frete e ficha da peça.
 
 ## Como ver
